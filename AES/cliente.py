@@ -4,6 +4,7 @@ import socket
 from faker import Faker
 
 from Crypto.Cipher import AES
+from sha256 import calculate_hash
 from Crypto.Util.Padding import pad
 from mockKMS import MockKMS
 start_time = time.perf_counter_ns()
@@ -20,9 +21,11 @@ faker = Faker("pt_BR")
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     plate = faker.license_plate()
+    hash_calculation = calculate_hash(plate)
 
-    
-    text = pad(plate.encode(), 16)
+    message = (plate + hash_calculation).encode()
+
+    text = pad(message, 16)
     ciphertext = obj.encrypt(text)
 
     s.sendall(ciphertext)
