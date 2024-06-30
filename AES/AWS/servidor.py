@@ -5,7 +5,7 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from Crypto.Util.Padding import unpad
 from sha256 import calculate_hash
-from mockKMS import MockKMS
+from AWS.KMS.mockKMS import MockKMS
 import base64
 
 HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
