@@ -1,5 +1,4 @@
-AES/AWS/mycert.key
-AES/raspberryPi/mycert.pem
+*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,6 +1,4 @@
 import paho.mqtt.client as mqtt
-import time
-import socket
 from faker import Faker
 from Crypto.Cipher import AES, PKCS1_OAEP
 from sha256 import calculate_hash
@@ -33,5 +31,5 @@ base64_bytes = base64.b64encode(post_rsa_message)
 text = pad(base64_bytes, 16)
 ciphertext = obj.encrypt(text)
 
-
+print("Message sent: ", ciphertext)
 mqtt_client.publish('/messages', ciphertext)
